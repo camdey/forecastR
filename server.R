@@ -53,7 +53,7 @@ function(input, output, session) {
     } else {
       dir.create(file.path(mainDir, subDir))
       setwd(file.path(mainDir, subDir))
-      file.copy('/home/rstudio/R/raw_ticket_data-1.csv', '/home/rstudio/files/raw_ticket_data-1.csv')
+      file.copy('/home/rstudio/R/files', '/home/rstudio', recursive = TRUE)
     }
     
     # if no file uploaded, select local file with highest suffix number
