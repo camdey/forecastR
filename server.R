@@ -44,6 +44,18 @@ function(input, output, session) {
     # print(input$csvFile)
     # print(file$upload_state)
     
+    mainDir <- "/home/rstudio"
+    subDir <- "files"
+    
+    # create file directories
+    if (file.exists(file.path(mainDir, subDir))){
+      setwd(file.path(mainDir, subDir))
+    } else {
+      dir.create(file.path(mainDir, subDir))
+      setwd(file.path(mainDir, subDir))
+      file.copy('/home/rstudio/R/raw_ticket_data-1.csv', '/home/rstudio/files/raw_ticket_data-1.csv')
+    }
+    
     # if no file uploaded, select local file with highest suffix number
     if (is.null(inFile) || is.null(file$upload_state)){
       # get array position of file with highest suffix
@@ -83,6 +95,9 @@ function(input, output, session) {
     outputString <- "fileInput('csvFile', 'Choose CSV File', multiple = FALSE, accept = c('text/csv', 
     'text/comma-separated-values,text/plain', '.csv'), 
     placeholder = sprintf('Most recent week included: %s', as.Date(tail(tickets.df$week, 1))))"
+    
+    # set directory back
+    setwd('/home/rstudio/R')
     
     output$ui <- renderUI({
       eval(parse(text = outputString))

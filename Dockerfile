@@ -59,6 +59,5 @@ EXPOSE 8787 3838
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"] 
 
 COPY . /home/rstudio/R
-
-RUN R -e "setwd('/home/rstudio/R')"
-RUN R -e "library(shiny)"
+# RUN mkdir /home/rstudio/files
+# COPY raw_ticket_data-1.csv /home/rstudio/files/raw_ticket_data-1.csv
