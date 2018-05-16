@@ -1,5 +1,5 @@
-docker run -d -p 3838:3838 -p 8787:8787 shiny-server:7
+docker run -d -p 3838:3838 -p 8787:8787 forecastr:1
 docker ps
 docker kill
-docker build /Users/Cameron/Documents/forecastR -t shiny-server:1
+docker build /Users/Cameron/Documents/forecastR -t forecastr:1
 cd ~/Documents/forecastR

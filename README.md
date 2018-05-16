@@ -23,7 +23,7 @@ The Docker Hub has a similar instance of Shiny-Server called [Rocker](https://hu
 ### Build the Dockerfile
 
 ```
-docker build /YOUR_PATH_TO/forecastR -t shiny-server:1
+docker build /YOUR_PATH_TO/forecastr -t forecastR:1
 ```
 
 ### View Your Docker Images
@@ -35,20 +35,20 @@ docker images
 ### Run your Shiny-Server Docker image.
 
 ```
-docker run -p 3838:3838 -p 8787:8787 -d shiny-server:1
+docker run -p 3838:3838 -p 8787:8787 -d forecastr:1
 ```
 
 * Shiny-Server is running at localhost:3838
 
 * RStudio Server is running at localhost:8787
 
-* The username and password for RStudio Server is `rstudio`.
 
 ### Open RStudio in browser
 
 ```
 localhost:8787
 ```
+* The username and password for RStudio Server is `rstudio`.
 
 ### Setup the RStudio environment
 ```
