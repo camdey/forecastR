@@ -64,8 +64,9 @@ function(input, output, session) {
       
       # add one to max suffix number for new file
       suffix = max(suffix[which(is.na(suffix)=='FALSE')])+1
-      # save to local file
-      write.csv(tickets.df, sprintf("/home/cdey20/Shiny/raw_ticket_data-%d.csv", suffix))
+      # get directory, save to local file
+      local_dir = getwd()
+      write.csv(tickets.df, sprintf(str_c(local_dir, "/raw_ticket_data-%d.csv"), suffix))
       # reset upload state to avoid new files being created on input
       file$upload_state = NULL
     }
