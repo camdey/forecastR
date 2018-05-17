@@ -2,9 +2,7 @@ FROM centos:centos7
 MAINTAINER kris eberwein
 
 RUN yum -y install epel-release
-RUN yum update -y
-RUN yum upgrade -y
-RUN yum clean all -y
+RUN yum update -y && yum upgrade -y && yum clean all -y
 # RUN yum reinstall -y glibc-common
 RUN yum install -y locales java-1.7.0-openjdk-devel tar wget
 
