@@ -1,11 +1,5 @@
-# library(shiny)
-# library(shinythemes)
 library(dplyr)
-# library(readr)
-# library(shinydashboard)
-# library(rsconnect)
 library(ggplot2)
-# library(RPostgres)
 library(DBI) # dbGetQuery
 library(forecast)
 library(magrittr) # for renaming stupid column
@@ -40,9 +34,6 @@ function(input, output, session) {
   output$plot <- renderPlot({
     ############# Load Data #############
     inFile <- input$csvFile
-    
-    # print(input$csvFile)
-    # print(file$upload_state)
     
     mainDir <- "/home/rstudio"
     subDir <- "files"
@@ -83,14 +74,6 @@ function(input, output, session) {
       file$upload_state = NULL
     }
     
-    # drop unnecessary columns
-    # tickets.df <- tickets.df %>% 
-    #   transmute(
-    #     week,
-    #     total_adjusted_tickets,
-    #     retailer_count
-    #   )
-    
     # fileInput using most recent date from dataframe in placeholder string
     outputString <- "fileInput('csvFile', 'Choose CSV File', multiple = FALSE, accept = c('text/csv', 
     'text/comma-separated-values,text/plain', '.csv'), 
@@ -123,7 +106,7 @@ function(input, output, session) {
       retailer_forecast <- as.vector(retailer_stlm.forecast$mean)
     }
     
-    # else using Steph's numbers from the board
+    # else use custom retailer growth numbers inputted from the UI
     else {
       # current number of retailers
       current_retailers <- tickets.df$retailer_count[which(as.Date(tickets.df$week) == max(as.Date(tickets.df$week)))]
